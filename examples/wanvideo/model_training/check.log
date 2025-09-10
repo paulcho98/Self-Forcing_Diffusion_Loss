@@ -1,0 +1,39 @@
+--- 🕵️ Explicit Checkpoint Comparison Tool ---
+
+Loading Checkpoint A: /home/cvlab20/project/jinhyuk/DiffSynth-Studio/examples/wanvideo/model_training/wan_dit_from_self_forcing_CORRECTED.safetensors
+Loading Checkpoint B: /home/cvlab20/project/hyunbin/Self-Forcing/wan_models/Wan2.1-T2V-1.3B/diffusion_pytorch_model.safetensors
+
+
+--- ## Overall Summary ## ---
+Checkpoint A: 825 tensors | 1,418,996,800 parameters | Size: 5.3 GiB
+Checkpoint B: 825 tensors | 1,418,996,800 parameters | Size: 5.3 GiB
+------------------------------
+
+--- ## Layer Name Differences ## ---
+✅ Layer names are identical.
+------------------------------
+
+--- ## Explicit Shape (Size) Comparison ## ---
+✅ No shape mismatches found across all 825 shared layers.
+------------------------------
+
+--- ## Explicit Data Type (Dtype) Comparison ## ---
+✅ No data type mismatches found across all 825 shared layers.
+------------------------------
+
+--- ## Explicit Value Comparison ## ---
+⚠️ Found 825 layers with different numerical values:
+  - Layer 'blocks.0.cross_attn.k.bias': Values differ (Avg. diff: 0.000241)
+  - Layer 'blocks.0.cross_attn.k.weight': Values differ (Avg. diff: 0.000191)
+  - Layer 'blocks.0.cross_attn.norm_k.weight': Values differ (Avg. diff: 0.000224)
+  - Layer 'blocks.0.cross_attn.norm_q.weight': Values differ (Avg. diff: 0.000224)
+  - Layer 'blocks.0.cross_attn.o.bias': Values differ (Avg. diff: 0.000104)
+  - Layer 'blocks.0.cross_attn.o.weight': Values differ (Avg. diff: 0.000188)
+  - Layer 'blocks.0.cross_attn.q.bias': Values differ (Avg. diff: 0.000215)
+  - Layer 'blocks.0.cross_attn.q.weight': Values differ (Avg. diff: 0.000175)
+  - Layer 'blocks.0.cross_attn.v.bias': Values differ (Avg. diff: 0.000155)
+  - Layer 'blocks.0.cross_attn.v.weight': Values differ (Avg. diff: 0.000187)
+  ...
+------------------------------
+
+--- ✅ Comparison Complete ---

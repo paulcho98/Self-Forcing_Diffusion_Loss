@@ -1,0 +1,3304 @@
+Inspecting contents of: /home/cvlab20/project/hyunbin/Self-Forcing/wan_models/Wan2.1-T2V-1.3B/diffusion_pytorch_model.safetensors
+
+- Layer: blocks.0.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.0.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.1.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.10.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.11.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.12.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.13.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.14.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.15.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.16.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.17.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.18.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.19.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.2.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.20.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.21.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.22.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.23.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.24.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.25.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.26.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.27.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.28.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.29.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.3.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.4.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.5.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.6.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.7.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.8.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.cross_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.cross_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.cross_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.cross_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.cross_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.cross_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.cross_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.cross_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.cross_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.cross_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.ffn.0.bias
+  Shape: torch.Size([8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.ffn.0.weight
+  Shape: torch.Size([8960, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.ffn.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.ffn.2.weight
+  Shape: torch.Size([1536, 8960])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.modulation
+  Shape: torch.Size([1, 6, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.norm3.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.norm3.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.self_attn.k.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.self_attn.k.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.self_attn.norm_k.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.self_attn.norm_q.weight
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.self_attn.o.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.self_attn.o.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.self_attn.q.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.self_attn.q.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.self_attn.v.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: blocks.9.self_attn.v.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: head.head.bias
+  Shape: torch.Size([64])
+  Type: torch.float32
+--------------------
+- Layer: head.head.weight
+  Shape: torch.Size([64, 1536])
+  Type: torch.float32
+--------------------
+- Layer: head.modulation
+  Shape: torch.Size([1, 2, 1536])
+  Type: torch.float32
+--------------------
+- Layer: patch_embedding.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: patch_embedding.weight
+  Shape: torch.Size([1536, 16, 1, 2, 2])
+  Type: torch.float32
+--------------------
+- Layer: text_embedding.0.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: text_embedding.0.weight
+  Shape: torch.Size([1536, 4096])
+  Type: torch.float32
+--------------------
+- Layer: text_embedding.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: text_embedding.2.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: time_embedding.0.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: time_embedding.0.weight
+  Shape: torch.Size([1536, 256])
+  Type: torch.float32
+--------------------
+- Layer: time_embedding.2.bias
+  Shape: torch.Size([1536])
+  Type: torch.float32
+--------------------
+- Layer: time_embedding.2.weight
+  Shape: torch.Size([1536, 1536])
+  Type: torch.float32
+--------------------
+- Layer: time_projection.1.bias
+  Shape: torch.Size([9216])
+  Type: torch.float32
+--------------------
+- Layer: time_projection.1.weight
+  Shape: torch.Size([9216, 1536])
+  Type: torch.float32
+--------------------
+
+✅ Found 825 total tensors in the file.

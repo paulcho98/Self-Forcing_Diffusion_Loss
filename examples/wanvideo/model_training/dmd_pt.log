@@ -1,0 +1,18 @@
+Loading checkpoint: /home/cvlab20/project/hyunbin/Self-Forcing/checkpoints/self_forcing_dmd.pt
+
+--- Top-Level Keys ---
+['generator_ema']
+
+--- Model Layer Names (from 'generator_ema') ---
+- model.patch_embedding.weight | Shape: torch.Size([1536, 16, 1, 2, 2])
+- model.patch_embedding.bias | Shape: torch.Size([1536])
+- model.text_embedding.0.weight | Shape: torch.Size([1536, 4096])
+- model.text_embedding.0.bias | Shape: torch.Size([1536])
+- model.text_embedding.2.weight | Shape: torch.Size([1536, 1536])
+- model.text_embedding.2.bias | Shape: torch.Size([1536])
+- model.time_embedding.0.weight | Shape: torch.Size([1536, 256])
+- model.time_embedding.0.bias | Shape: torch.Size([1536])
+- model.time_embedding.2.weight | Shape: torch.Size([1536, 1536])
+- model.time_embedding.2.bias | Shape: torch.Size([1536])
+
+Found a total of 825 layers in the model.
