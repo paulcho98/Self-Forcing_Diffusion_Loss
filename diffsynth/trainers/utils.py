@@ -619,6 +619,18 @@ def wan_parser():
     parser.add_argument("--save_steps", type=int, default=None, help="Number of checkpoint saving invervals. If None, checkpoints will be saved every epoch.")
     parser.add_argument("--dataset_num_workers", type=int, default=0, help="Number of workers for data loading.")
     parser.add_argument("--weight_decay", type=float, default=0.01, help="Weight decay.")
+    # Self-Forcing discrete timestep support
+    parser.add_argument("--sf_restrict_timesteps", default=False, action="store_true", help="Restrict training timesteps to a warped denoising_step_list like Self-Forcing.")
+    parser.add_argument("--sf_denoising_step_list", type=str, default="1000,750,500,250", help="Comma-separated denoising steps (e.g., 1000,750,500,250).")
+    parser.add_argument("--sf_warp_denoising_step", default=True, action="store_true", help="Apply Self-Forcing warp: use scheduler.timesteps[1000 - step].")
+    parser.add_argument("--sf_timestep_shift", type=float, default=5.0, help="Scheduler shift used to compute timesteps (should match Self-Forcing config).")
+        # Weights & Biases (optional)
+    parser.add_argument("--use_wandb", default=False, action="store_true", help="Enable Weights & Biases logging (main process only).")
+    parser.add_argument("--wandb_project", type=str, default="DiffSynth", help="W&B project name.")
+    parser.add_argument("--wandb_entity", type=str, default=None, help="W&B entity (team) name.")
+    parser.add_argument("--wandb_run_name", type=str, default=None, help="W&B run name.")
+    parser.add_argument("--wandb_tags", type=str, default=None, help="Comma-separated W&B tags.")
+    parser.add_argument("--wandb_log_every", type=int, default=10, help="Log every N steps.")
     return parser
 
 

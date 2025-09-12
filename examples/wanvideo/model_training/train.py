@@ -1,8 +1,11 @@
 import torch, os, json
+from tqdm import tqdm
+from accelerate import Accelerator
+from accelerate.utils import DistributedDataParallelKwargs
 from diffsynth import load_state_dict
 from diffsynth.pipelines.wan_video_new import WanVideoPipeline, ModelConfig
 from diffsynth.models.audio_pack import AudioPack
-from diffsynth.trainers.utils import DiffusionTrainingModule, ModelLogger, launch_training_task, wan_parser
+from diffsynth.trainers.utils import DiffusionTrainingModule, ModelLogger, wan_parser
 from diffsynth.trainers.unified_dataset import UnifiedDataset
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
@@ -250,4 +253,128 @@ if __name__ == "__main__":
         args.output_path,
         remove_prefix_in_ckpt=args.remove_prefix_in_ckpt
     )
-    launch_training_task(dataset, model, model_logger, args=args)
+
+    # Custom training loop with accumulated/EMA loss logging to Weights & Biases.
+    def launch_training_task_with_accum_logging(
+        dataset,
+        model,
+        model_logger,
+        args,
+    ):
+        learning_rate = args.learning_rate
+        weight_decay = args.weight_decay
+        num_workers = args.dataset_num_workers
+        save_steps = args.save_steps
+        num_epochs = args.num_epochs
+        gradient_accumulation_steps = args.gradient_accumulation_steps
+        find_unused_parameters = args.find_unused_parameters
+
+        optimizer = torch.optim.AdamW(model.trainable_modules(), lr=learning_rate, weight_decay=weight_decay)
+        scheduler = torch.optim.lr_scheduler.ConstantLR(optimizer)
+        dataloader = torch.utils.data.DataLoader(dataset, shuffle=True, collate_fn=lambda x: x[0], num_workers=num_workers)
+        accelerator = Accelerator(
+            gradient_accumulation_steps=gradient_accumulation_steps,
+            kwargs_handlers=[DistributedDataParallelKwargs(find_unused_parameters=find_unused_parameters)],
+        )
+        model, optimizer, dataloader, scheduler = accelerator.prepare(model, optimizer, dataloader, scheduler)
+
+        # Optional W&B setup
+        use_wandb = getattr(args, "use_wandb", False)
+        wandb_log_every = getattr(args, "wandb_log_every", 10)
+        if use_wandb and accelerator.is_main_process:
+            try:
+                import wandb
+                wandb.init(
+                    project=getattr(args, "wandb_project", "DiffSynth"),
+                    entity=getattr(args, "wandb_entity", None),
+                    name=getattr(args, "wandb_run_name", None),
+                    tags=(getattr(args, "wandb_tags", None) or "").split(",") if getattr(args, "wandb_tags", None) else None,
+                    config={
+                        "learning_rate": learning_rate,
+                        "weight_decay": weight_decay,
+                        "gradient_accumulation_steps": gradient_accumulation_steps,
+                        "num_epochs": num_epochs,
+                    },
+                )
+            except Exception as e:
+                use_wandb = False
+                print(f"[W&B] Disabled due to import/init error: {e}")
+
+        # Accumulation trackers (optimizer-step granularity)
+        global_step = 0  # counts optimizer steps (after gradient accumulation)
+        cum_loss_sum = 0.0
+        cum_loss_count = 0
+        window_loss_sum = 0.0
+        window_loss_count = 0
+        ema_loss = None
+        ema_beta = 0.98
+        # microstep accumulation for one optimizer step
+        ga_loss_sum = 0.0
+        ga_loss_count = 0
+
+        for epoch_id in range(num_epochs):
+            for data in tqdm(dataloader):
+                with accelerator.accumulate(model):
+                    optimizer.zero_grad()
+                    if dataset.load_from_cache:
+                        loss = model({}, inputs=data)
+                    else:
+                        loss = model(data)
+                    accelerator.backward(loss)
+                    optimizer.step()
+                    model_logger.on_step_end(accelerator, model, save_steps)
+                    scheduler.step()
+
+                    # Convert to scalar safely on CPU to avoid blocking the graph
+                    with torch.no_grad():
+                        micro_loss = float(loss.detach().to("cpu", dtype=torch.float32))
+                    ga_loss_sum += micro_loss
+                    ga_loss_count += 1
+
+                    # Only treat as a training "step" when gradients are synchronized
+                    if accelerator.sync_gradients:
+                        step_loss = ga_loss_sum / max(1, ga_loss_count)
+                        ga_loss_sum = 0.0
+                        ga_loss_count = 0
+
+                        global_step += 1
+                        cum_loss_sum += step_loss
+                        cum_loss_count += 1
+                        window_loss_sum += step_loss
+                        window_loss_count += 1
+                        ema_loss = step_loss if ema_loss is None else (ema_beta * ema_loss + (1 - ema_beta) * step_loss)
+
+                        # Periodic logging (main process only)
+                        if use_wandb and accelerator.is_main_process and (global_step % wandb_log_every == 0):
+                            try:
+                                import wandb
+                                log = {
+                                    "loss/ga_mean": step_loss,  # loss averaged inside one optimizer step
+                                    "loss/ema": ema_loss,
+                                    "loss/window_mean": window_loss_sum / max(1, window_loss_count),
+                                    "loss/cum_mean": cum_loss_sum / max(1, cum_loss_count),
+                                    "train/epoch": epoch_id,
+                                    "train/step": global_step,
+                                }
+                                wandb.log(log, step=global_step)
+                            except Exception as e:
+                                # Non-fatal logging failure
+                                print(f"[W&B] log error at step {global_step}: {e}")
+                            # Reset window stats after logging
+                            window_loss_sum = 0.0
+                            window_loss_count = 0
+
+            if save_steps is None:
+                model_logger.on_epoch_end(accelerator, model, epoch_id)
+
+        if use_wandb and accelerator.is_main_process:
+            try:
+                import wandb
+                wandb.summary["final/loss_ema"] = ema_loss
+                wandb.finish()
+            except Exception as e:
+                print(f"[W&B] finish error: {e}")
+
+        model_logger.on_training_end(accelerator, model, save_steps)
+
+    launch_training_task_with_accum_logging(dataset, model, model_logger, args)

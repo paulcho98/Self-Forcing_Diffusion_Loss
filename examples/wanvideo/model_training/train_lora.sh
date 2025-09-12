@@ -4,13 +4,13 @@
 # with LoRA on your custom dataset.
 
 accelerate launch ./train.py \
-    --dataset_base_path="/mnt/dataset1/jinhyuk/Hallo3/cropped_only_10K_preprocessed/videos_cfr" \
+    --dataset_base_path="/home/work/.local/cropped_only_10K_preprocessed/videos_cfr" \
     --dataset_metadata_path="metadata_audio.csv" \
     --height=480 \
     --width=832 \
     --num_frames=81 \
     --trainable_models="dit" \
-    --model_paths='["/home/cvlab20/project/jinhyuk/DiffSynth-Studio/examples/wanvideo/model_training/wan_dit_from_self_forcing_CORRECTED.safetensors","/home/cvlab20/project/hyunbin/Self-Forcing/wan_models/Wan2.1-T2V-1.3B/models_t5_umt5-xxl-enc-bf16.pth","/home/cvlab20/project/hyunbin/Self-Forcing/wan_models/Wan2.1-T2V-1.3B/Wan2.1_VAE.pth"]' \
+    --model_paths='["/home/work/.local/Diffusion-Loss/examples/wanvideo/model_training/wan_dit_from_self_forcing_CORRECTED.safetensors","/home/work/.local/Self-Forcing-Omniavatar/Self-Forcing/wan_models/Wan2.1-T2V-1.3B/models_t5_umt5-xxl-enc-bf16.pth", "/home/work/.local/Self-Forcing-Omniavatar/Self-Forcing/wan_models/Wan2.1-T2V-1.3B/Wan2.1_VAE.pth"]' \
     --lora_base_model="dit" \
     --lora_target_modules="q,k,v,o,ffn.0,ffn.2" \
     --lora_rank=128 \
@@ -20,7 +20,7 @@ accelerate launch ./train.py \
     --num_epochs=10 \
     --save_steps=100 \
     --extra_inputs="input_image,audio_emb" \
-    --gradient_accumulation_steps=32 \
+    --gradient_accumulation_steps=4 \
     --sf_restrict_timesteps \
     --sf_denoising_step_list="1000,750,500,250" \
     --sf_warp_denoising_step \
@@ -28,7 +28,7 @@ accelerate launch ./train.py \
     --use_wandb \
     --wandb_project="Self-Forcing-OmniAvatar-Diffusion-Loss" \
     --wandb_entity="paulhcho" \
-    --wandb_log_every 32\
+    --wandb_log_every 4\
     # --use_gradient_checkpointing_offload \
     \
     # # --- MEMORY SAVING CHANGES ---
