@@ -397,14 +397,14 @@ class WanVideoPipeline(BasePipeline):
                 setattr(base,'fuse_vae_embedding_in_latents', False)
         except Exception:
             pass
-        try:
-            print(
-                f"[DBG] load_causal_wan: in_dim={getattr(base,'in_dim',None)} require_vae={getattr(base,'require_vae_embedding',None)} "
-                f"require_clip={getattr(base,'require_clip_embedding',None)} has_image_pos_emb={getattr(base,'has_image_pos_emb',None)}",
-                flush=True,
-            )
-        except Exception:
-            pass
+        # try:
+        #     print(
+        #         f"[DBG] load_causal_wan: in_dim={getattr(base,'in_dim',None)} require_vae={getattr(base,'require_vae_embedding',None)} "
+        #         f"require_clip={getattr(base,'require_clip_embedding',None)} has_image_pos_emb={getattr(base,'has_image_pos_emb',None)}",
+        #         flush=True,
+        #     )
+        # except Exception:
+        #     pass
         if audio_proj is not None:
             proj = getattr(audio_proj, 'proj', None)
             if proj is not None:
@@ -485,15 +485,15 @@ class WanVideoPipeline(BasePipeline):
 
         # Route to OmniAvatar-style audio path if explicit audio embeddings are provided.
         if inputs.get("audio_emb", None) is not None:
-            try:
-                y_dbg = inputs.get("y")
-                print(
-                    f"[DBG] training_loss: latents={tuple(inputs['latents'].shape)}, input_latents={tuple(inputs['input_latents'].shape)}, "
-                    f"y={(tuple(y_dbg.shape) if y_dbg is not None else None)}, dit.in_dim={getattr(self.dit,'in_dim',None)}",
-                    flush=True,
-                )
-            except Exception:
-                pass
+            # try:
+            #     y_dbg = inputs.get("y")
+            #     print(
+            #         f"[DBG] training_loss: latents={tuple(inputs['latents'].shape)}, input_latents={tuple(inputs['input_latents'].shape)}, "
+            #         f"y={(tuple(y_dbg.shape) if y_dbg is not None else None)}, dit.in_dim={getattr(self.dit,'in_dim',None)}",
+            #         flush=True,
+            #     )
+            # except Exception:
+            #     pass
             noise_pred = self.model_fn_audio_new(
                 dit=self.dit,
                 latents=inputs["latents"],
@@ -535,14 +535,14 @@ class WanVideoPipeline(BasePipeline):
         # Ensure audio embeddings are on same device/dtype as latents
         if audio_emb is not None:
             audio_emb = audio_emb.to(device=latents.device, dtype=latents.dtype)
-        try:
-            print(
-                f"[DBG] audio_new: dit.in_dim={getattr(dit,'in_dim',None)}, require_vae={getattr(dit,'require_vae_embedding',None)}, "
-                f"latents={latents.shape}, y={(y.shape if y is not None else None)}",
-                flush=True,
-            )
-        except Exception:
-            pass
+        # try:
+        #     print(
+        #         f"[DBG] audio_new: dit.in_dim={getattr(dit,'in_dim',None)}, require_vae={getattr(dit,'require_vae_embedding',None)}, "
+        #         f"latents={latents.shape}, y={(y.shape if y is not None else None)}",
+        #         flush=True,
+        #     )
+        # except Exception:
+        #     pass
         frame_seq_length = getattr(self, 'frame_seq_length', 1560)  # tokens per frame
         # Allow tuning frames per block via pipeline attribute set by training module
         num_frame_per_block = int(getattr(self, 'audio_frames_per_block', 3))
@@ -610,11 +610,11 @@ class WanVideoPipeline(BasePipeline):
                 xC = noisy_input.shape[1]
                 yC = 0 if y_block is None else y_block.shape[1]
                 exp = getattr(dit, 'in_dim', None)
-                print(
-                    f"[DBG] audio_new block={block_index} frames={cur_frames} start={start_idx} end={end_idx} "
-                    f"xC={xC} yC={yC} total={xC+yC} exp_in_dim={exp}",
-                    flush=True,
-                )
+                # print(
+                #     f"[DBG] audio_new block={block_index} frames={cur_frames} start={start_idx} end={end_idx} "
+                #     f"xC={xC} yC={yC} total={xC+yC} exp_in_dim={exp}",
+                #     flush=True,
+                # )
             except Exception:
                 pass
 
@@ -1287,10 +1287,10 @@ class WanVideoUnit_InputVideoEmbedder(PipelineUnit):
             vace_reference_image = pipe.preprocess_video([vace_reference_image])
             vace_reference_latents = pipe.vae.encode(vace_reference_image, device=pipe.device).to(dtype=pipe.torch_dtype, device=pipe.device)
             input_latents = torch.concat([vace_reference_latents, input_latents], dim=2)
-        try:
-            print(f"[DBG-X][InputVideo] input_latents={tuple(input_latents.shape)}", flush=True)
-        except Exception:
-            pass
+        # try:
+        #     print(f"[DBG-X][InputVideo] input_latents={tuple(input_latents.shape)}", flush=True)
+        # except Exception:
+        #     pass
         if pipe.scheduler.training:
             return {"latents": noise, "input_latents": input_latents}
         else:
@@ -1352,10 +1352,10 @@ class WanVideoUnit_ImageEmbedder(PipelineUnit):
         y = y.unsqueeze(0)
         clip_context = clip_context.to(dtype=pipe.torch_dtype, device=pipe.device)
         y = y.to(dtype=pipe.torch_dtype, device=pipe.device)
-        try:
-            print(f"[DBG-Y][ImageDeprecated] y={tuple(y.shape)} (deprecated path)", flush=True)
-        except Exception:
-            pass
+        # try:
+        #     print(f"[DBG-Y][ImageDeprecated] y={tuple(y.shape)} (deprecated path)", flush=True)
+        # except Exception:
+        #     pass
         return {"clip_feature": clip_context, "y": y}
 
 
@@ -1378,10 +1378,10 @@ class WanVideoUnit_ImageEmbedderCLIP(PipelineUnit):
             if pipe.dit.has_image_pos_emb:
                 clip_context = torch.concat([clip_context, pipe.image_encoder.encode_image([end_image])], dim=1)
         clip_context = clip_context.to(dtype=pipe.torch_dtype, device=pipe.device)
-        try:
-            print(f"[DBG-Y][ImageCLIP] clip_feature={tuple(clip_context.shape)}", flush=True)
-        except Exception:
-            pass
+        # try:
+        #     print(f"[DBG-Y][ImageCLIP] clip_feature={tuple(clip_context.shape)}", flush=True)
+        # except Exception:
+        #     pass
         return {"clip_feature": clip_context}
     
 
@@ -1423,10 +1423,10 @@ class WanVideoUnit_ImageEmbedderVAE(PipelineUnit):
         # Concatenate 1-channel mask with 16-channel latents => 17 channels total
         y = torch.cat([mask_zip, y_lat], dim=0).unsqueeze(0)
         y = y.to(dtype=pipe.torch_dtype, device=pipe.device)
-        try:
-            print(f"[DBG-Y][ImageVAE] y={tuple(y.shape)} (mask+latents) maskC=1 latC=16", flush=True)
-        except Exception:
-            pass
+        # try:
+        #     print(f"[DBG-Y][ImageVAE] y={tuple(y.shape)} (mask+latents) maskC=1 latC=16", flush=True)
+        # except Exception:
+        #     pass
         return {"y": y}
 
 
@@ -1473,13 +1473,13 @@ class WanVideoUnit_FunControl(PipelineUnit):
         else:
             y = y[:, -y_dim:]
         y = torch.concat([control_latents, y], dim=1)
-        try:
-            print(
-                f"[DBG-Y][FunControl] control_latentsC={control_latents.shape[1]} y_dim_after={y.shape[1]} expected_additional={(pipe.dit.in_dim - latents.shape[1])}",
-                flush=True,
-            )
-        except Exception:
-            pass
+        # try:
+        #     print(
+        #         f"[DBG-Y][FunControl] control_latentsC={control_latents.shape[1]} y_dim_after={y.shape[1]} expected_additional={(pipe.dit.in_dim - latents.shape[1])}",
+        #         flush=True,
+        #     )
+        # except Exception:
+        #     pass
         return {"clip_feature": clip_feature, "y": y}
     
 
@@ -1552,13 +1552,13 @@ class WanVideoUnit_FunCameraControl(PipelineUnit):
             y = torch.cat([msk,y])
             y = y.unsqueeze(0)
             y = y.to(dtype=pipe.torch_dtype, device=pipe.device)
-        try:
-            print(
-                f"[DBG-Y][Camera] final y={tuple(y.shape)} expected_yC={(pipe.dit.in_dim - latents.shape[1])}",
-                flush=True,
-            )
-        except Exception:
-            pass
+        # try:
+        #     print(
+        #         f"[DBG-Y][Camera] final y={tuple(y.shape)} expected_yC={(pipe.dit.in_dim - latents.shape[1])}",
+        #         flush=True,
+        #     )
+        # except Exception:
+        #     pass
         return {"control_camera_latents_input": control_camera_latents_input, "y": y}
 
 
