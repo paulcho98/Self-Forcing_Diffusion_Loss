@@ -157,11 +157,32 @@ class WanTrainingModule(DiffusionTrainingModule):
         # Training mode
         # If we are using external causal WAN, avoid double-injecting LoRA via DiffSynth
         lora_base_model_effective = None if (use_causal_wan and causal_wan_model_file is not None) else lora_base_model
+        # Also, when using external CausalWan, do NOT unfreeze the entire 'dit' via freeze_except;
+        # we rely on PEFT-LoRA + audio layers toggles for trainable params.
+        trainable_models_effective = None if (use_causal_wan and causal_wan_model_file is not None) else trainable_models
         self.switch_pipe_to_training_mode(
-            self.pipe, trainable_models,
+            self.pipe, trainable_models_effective,
             lora_base_model_effective, lora_target_modules, lora_rank, lora_checkpoint=lora_checkpoint,
             enable_fp8_training=False,
         )
+
+        # If using external CausalWan, re-enable only LoRA + audio after freeze_except([])
+        if use_causal_wan and causal_wan_model_file is not None:
+            try:
+                dit = self.pipe.dit
+                # Turn on grads for LoRA and audio modules only
+                for name, p in dit.named_parameters():
+                    if (
+                        ('lora_A.default' in name) or ('lora_B.default' in name) or
+                        ('audio_proj' in name) or ('audio_cond_projs' in name)
+                    ):
+                        p.requires_grad = True
+                if MEM_DEBUG:
+                    # Print a quick count of trainable params
+                    tp = sum(int(p.requires_grad) for _, p in dit.named_parameters())
+                    print(f"[CausalWan] Re-enabled trainable params (LoRA+audio only). Count={tp}")
+            except Exception as e:
+                print(f"[CausalWan] Failed to re-enable LoRA/audio params: {e}")
         
         # Store other configs
         self.use_gradient_checkpointing = use_gradient_checkpointing
