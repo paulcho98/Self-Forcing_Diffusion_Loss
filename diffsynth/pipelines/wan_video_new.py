@@ -660,6 +660,8 @@ class WanVideoPipeline(BasePipeline):
             # Step 2.3: update cache with clean latents
             t_ctx = torch.zeros((batch_size, cur_frames), device=latents.device, dtype=torch.float32)
             clean_block = clean_latents[:, :, start_idx:end_idx]
+            if block_index == 0:
+                clean_block[:, :, 0, :, :] = first_frame[:, :, 0, :, :]
             if y is not None:
                 clean_concat = torch.cat([clean_block, y_block], dim=1)
             else:
@@ -685,6 +687,7 @@ class WanVideoPipeline(BasePipeline):
 
             # Step 2.4: update the start and end frame indices
             current_start_frame += cur_frames
+        output[:, :, 0, :, :] = first_frame
         return output
 
 
