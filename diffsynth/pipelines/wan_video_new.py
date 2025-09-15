@@ -687,7 +687,8 @@ class WanVideoPipeline(BasePipeline):
 
             # Step 2.4: update the start and end frame indices
             current_start_frame += cur_frames
-        output[:, :, 0, :, :] = first_frame
+        # fix error here
+        output[:, :, 0, :, :] = first_frame[:, :, 0, :, :]
         return output
 
 
