@@ -619,6 +619,11 @@ def wan_parser():
     parser.add_argument("--save_steps", type=int, default=None, help="Number of checkpoint saving invervals. If None, checkpoints will be saved every epoch.")
     parser.add_argument("--dataset_num_workers", type=int, default=0, help="Number of workers for data loading.")
     parser.add_argument("--weight_decay", type=float, default=0.01, help="Weight decay.")
+    # Precomputed inputs (optional)
+    parser.add_argument("--use_precomputed_context", default=False, action="store_true", help="Use precomputed text embeddings and skip prompt encoder.")
+    parser.add_argument("--use_precomputed_latents", default=False, action="store_true", help="Use precomputed VAE latents and skip VAE encoding.")
+    parser.add_argument("--precomputed_context_key", type=str, default="context_path", help="Metadata key containing path to precomputed text embeddings (.pt).")
+    parser.add_argument("--precomputed_latents_key", type=str, default="vae_latents_path", help="Metadata key containing path to precomputed VAE latents (.pt).")
     # Self-Forcing discrete timestep support
     parser.add_argument("--sf_restrict_timesteps", default=False, action="store_true", help="Restrict training timesteps to a warped denoising_step_list like Self-Forcing.")
     parser.add_argument("--sf_denoising_step_list", type=str, default="1000,750,500,250", help="Comma-separated denoising steps (e.g., 1000,750,500,250).")
@@ -631,6 +636,27 @@ def wan_parser():
     parser.add_argument("--wandb_run_name", type=str, default=None, help="W&B run name.")
     parser.add_argument("--wandb_tags", type=str, default=None, help="Comma-separated W&B tags.")
     parser.add_argument("--wandb_log_every", type=int, default=10, help="Log every N steps.")
+    # Memory / precision
+    parser.add_argument("--enable_gc", default=False, action="store_true", help="Enable gradient checkpointing for DiT/CausalWan")
+    parser.add_argument(
+        "--mixed_precision",
+        type=str,
+        default="bf16",
+        choices=["no", "fp16", "bf16"],
+        help="Accelerate mixed precision mode (default: bf16)",
+    )
+    parser.add_argument("--audio_frames_per_block", type=int, default=3, help="Frames per causal block in audio path (memory knob)")
+    # Optional: integrate external causal WAN model
+    parser.add_argument("--use_causal_wan", default=False, action="store_true", help="Replace DiT with external CausalWanModel.")
+    parser.add_argument("--causal_wan_model_file", type=str, default=None, help="Path to causal_model.py defining CausalWanModel.")
+    parser.add_argument("--causal_wan_config", type=str, default=None, help="Optional: path to config.json for CausalWanModel.")
+    parser.add_argument("--causal_wan_weights", type=str, default=None, help="Path to pretrained weights (.pt/.pth/.safetensors) for CausalWanModel.")
+    parser.add_argument("--causal_wan_kwargs", type=str, default=None, help="JSON string of extra kwargs for CausalWanModel (e.g., {\"use_audio\":true,\"in_dim\":33}).")
+    # Optional: LoRA for external CausalWanModel via PEFT
+    parser.add_argument("--causal_wan_lora_rank", type=int, default=None, help="If set, apply LoRA with this rank to CausalWanModel.")
+    parser.add_argument("--causal_wan_lora_alpha", type=float, default=64.0, help="LoRA alpha for CausalWanModel.")
+    parser.add_argument("--causal_wan_lora_targets", type=str, default="q,k,v,o,ffn.0,ffn.2", help="Comma list of target module names for LoRA.")
+    parser.add_argument("--causal_wan_lora_init", type=str, default="kaiming", help="LoRA weight init scheme.")
     return parser
 
 

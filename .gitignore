@@ -8,3 +8,4 @@ examples/wanvideo/model_training/output
 *.gif
 examples/wanvideo/model_training/diffusion_loss/
 examples/wanvideo/model_training/models/
+wandb/

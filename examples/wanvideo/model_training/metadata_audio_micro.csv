@@ -1,3 +1,2 @@
-video,prompt,audio_emb
-videos_cfr/af30ad86e261e478cf02fd08e176743b_cfr25.mp4,a person is talking,audio_emb_omniavatar_aligned/af30ad86e261e478cf02fd08e176743b.pt
-
+video,prompt,audio_emb,context_path,vae_latents_path
+af30ad86e261e478cf02fd08e176743b_cfr25.mp4,a person is talking,/mnt/dataset1/jinhyuk/Hallo3/cropped_only_10K_preprocessed/audio_emb_omniavatar_aligned/af30ad86e261e478cf02fd08e176743b.pt,/mnt/dataset1/jinhyuk/Hallo3/cropped_only_10K_preprocessed/text_emb/af30ad86e261e478cf02fd08e176743b.pt,/mnt/dataset1/jinhyuk/Hallo3/cropped_only_10K_preprocessed/vae_latents_optimized/af30ad86e261e478cf02fd08e176743b_clip00_latents.pt

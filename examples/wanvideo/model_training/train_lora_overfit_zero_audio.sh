@@ -1,7 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# This script fine-tunes a local Wan 2.1 1.3B model
-# with LoRA on your custom dataset.
+set -euo pipefail
+
+# Overfit a single sample with zero-initialized audio projection (ablation)
 
 accelerate launch ./train.py \
     --dataset_base_path="/mnt/dataset1/jinhyuk/Hallo3/cropped_only_10K_preprocessed/videos_cfr" \
@@ -15,7 +16,7 @@ accelerate launch ./train.py \
     --lora_target_modules="q,k,v,o,ffn.0,ffn.2" \
     --lora_rank=128 \
     --remove_prefix_in_ckpt="pipe.dit" \
-    --output_path="/mnt/dataset1/hyunbin/self_forcing_omniavatar_diffusion_loss" \
+    --output_path="/mnt/dataset1/hyunbin/self_forcing_omniavatar_diffusion_loss_overfit_zero_audio" \
     --learning_rate=5e-5 \
     --num_epochs=10 \
     --save_steps=100 \
@@ -28,23 +29,14 @@ accelerate launch ./train.py \
     --use_wandb \
     --wandb_project="Self-Forcing-OmniAvatar-Diffusion-Loss" \
     --wandb_entity="paulhcho" \
-    --wandb_log_every 4\
-    \
+    --wandb_log_every 4 \
     --use_causal_wan \
     --causal_wan_model_file "/home/cvlab20/project/hyunbin/talkingface_dmd/Self-Forcing/wan/modules/causal_model.py" \
     --causal_wan_weights "/home/cvlab20/project/hyunbin/talkingface_dmd/Self-Forcing/checkpoints/self_forcing_dmd.pt" \
     --causal_wan_lora_rank 128 \
     --causal_wan_lora_alpha 64 \
     --causal_wan_lora_targets "q,k,v,o,ffn.0,ffn.2" \
-    --causal_wan_kwargs '{"use_audio": true, "in_dim": 33, "audio_hidden_size": 32}'\
+    --causal_wan_kwargs '{"use_audio": true, "in_dim": 33, "audio_hidden_size": 32, "zero_audio_proj": true}'\
     \
     --enable_gc \
-    # --use_gradient_checkpointing_offload \
-    \
-    # # --- MEMORY SAVING CHANGES ---
-    # # 1. Reduce the per-device batch size to the minimum.
-    # --per_device_train_batch_size=1 \
-    # \
-    # # 2. Use gradient accumulation to maintain a larger effective batch size.
-    # #    An effective batch size of 4 (1 * 4) is a good starting point.
-    # --gradient_accumulation_steps=4
+

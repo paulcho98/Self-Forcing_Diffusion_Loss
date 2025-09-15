@@ -7,7 +7,7 @@ set -euo pipefail
 
 THIS_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-MEM_DEBUG=1 PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True accelerate launch "$THIS_DIR/train.py" \
+CUDA_VISIBLE_DEVICES=5 accelerate launch --num_processes 1 --main_process_port 29501 "$THIS_DIR/train.py" \
   --dataset_base_path="/mnt/dataset1/jinhyuk/Hallo3/cropped_only_10K_preprocessed/videos_cfr" \
   --dataset_metadata_path="$THIS_DIR/metadata_audio_micro.csv" \
   --data_file_keys="video" \
@@ -44,9 +44,6 @@ MEM_DEBUG=1 PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True accelerate launch "
   --causal_wan_lora_alpha 64 \
   --causal_wan_lora_targets "q,k,v,o,ffn.0,ffn.2" \
   --causal_wan_kwargs '{"use_audio": true, "in_dim": 33, "audio_hidden_size": 32}'\
-  --use_precomputed_context \
-  --use_precomputed_latents \
   --enable_gc \
-  --use_gradient_checkpointing_offload \
 
 echo "Overfit run started. Check ./output/overfit_1clip for checkpoints."
