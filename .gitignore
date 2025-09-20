@@ -9,3 +9,5 @@ examples/wanvideo/model_training/output
 examples/wanvideo/model_training/diffusion_loss/
 examples/wanvideo/model_training/models/
 wandb/
+*.sh
+*.csv
