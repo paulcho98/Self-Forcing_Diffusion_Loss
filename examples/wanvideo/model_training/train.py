@@ -1,4 +1,5 @@
-import torch, os, json
+import torch, os, json, random
+from typing import Optional
 from tqdm import tqdm
 from accelerate import Accelerator
 from accelerate.utils import DistributedDataParallelKwargs
@@ -123,6 +124,14 @@ class WanTrainingModule(DiffusionTrainingModule):
         causal_wan_lora_targets="q,k,v,o,ffn.0,ffn.2",
         causal_wan_lora_init="kaiming",
         audio_frames_per_block: int = 3,
+        # CFG training toggles
+        enable_text_dropout: bool = False,
+        text_dropout_prob: float = 0.0,
+        enable_audio_dropout: bool = False,
+        audio_dropout_prob: float = 0.0,
+        # Warm-start audio from OmniAvatar ckpt
+        init_audio_from_omni: bool = False,
+        omni_ckpt_path: Optional[str] = None,
     ):
         super().__init__()
         # Load models
@@ -148,6 +157,8 @@ class WanTrainingModule(DiffusionTrainingModule):
                     lora_alpha=causal_wan_lora_alpha,
                     lora_targets=causal_wan_lora_targets.split(',') if causal_wan_lora_targets else None,
                     lora_init=causal_wan_lora_init,
+                    # init_audio_from_omni=init_audio_from_omni,
+                    # omni_audio_ckpt_path=omni_ckpt_path,
                     **extra_kw,
                 )
                 print("[CausalWan] Loaded external CausalWanModel and attached as pipe.dit")
@@ -174,7 +185,8 @@ class WanTrainingModule(DiffusionTrainingModule):
                 for name, p in dit.named_parameters():
                     if (
                         ('lora_A.default' in name) or ('lora_B.default' in name) or
-                        ('audio_proj' in name) or ('audio_cond_projs' in name)
+                        ('audio_proj' in name) or ('audio_cond_projs' in name) or
+                        ('patch_embedding' in name)
                     ):
                         p.requires_grad = True
                 if MEM_DEBUG:
@@ -198,6 +210,13 @@ class WanTrainingModule(DiffusionTrainingModule):
         self.max_timestep_boundary = max_timestep_boundary
         self.min_timestep_boundary = min_timestep_boundary
         self.dataset_base_path = dataset_base_path
+        # Condition dropout config
+        self.enable_text_dropout = bool(enable_text_dropout)
+        self.text_dropout_prob = float(text_dropout_prob)
+        self.enable_audio_dropout = bool(enable_audio_dropout)
+        self.audio_dropout_prob = float(audio_dropout_prob)
+        self._last_text_drop = False
+        self._last_audio_drop = False
         # Configure optional Self-Forcing-style discrete timesteps
         self.pipe.sf_allowed_timestep_indices = None
         if sf_restrict_timesteps:
@@ -244,10 +263,17 @@ class WanTrainingModule(DiffusionTrainingModule):
                 dit.patch_embedding = new_conv
                 dit.in_dim = 33
                 dit.require_vae_embedding = True
+                # Train the new input conv so it can learn to fuse y
+                try:
+                    for p in dit.patch_embedding.parameters():
+                        p.requires_grad = True
+                except Exception:
+                    pass
 
-        # If audio embeddings are expected, ensure audio modules exist and are zero-initialized
+        # If audio embeddings are expected, ensure audio modules exist and are initialized
         if "audio_emb" in self.extra_inputs:
             dit = self.pipe.dit
+            # 1) Ensure modules exist
             if not hasattr(dit, "audio_proj") or dit.audio_proj is None:
                 dit.audio_proj = AudioPack(in_channels=10752, patch_size=(4,1,1), dim=32, layernorm=True)
             if not hasattr(dit, "audio_cond_projs") or dit.audio_cond_projs is None:
@@ -256,20 +282,63 @@ class WanTrainingModule(DiffusionTrainingModule):
             # Move to pipeline dtype for consistency
             dit.audio_proj = dit.audio_proj.to(dtype=self.pipe.torch_dtype)
             dit.audio_cond_projs = dit.audio_cond_projs.to(dtype=self.pipe.torch_dtype)
-            # Set trainable and warm-up init to avoid zero-grad deadlock
+
+            # 2) Optionally warm-start from OmniAvatar checkpoint (moved from pipeline to trainer)
+            audio_loaded_from_omni = False
+            if bool(init_audio_from_omni) and (omni_ckpt_path is not None):
+                try:
+                    try:
+                        omni = torch.load(omni_ckpt_path, map_location="cpu", weights_only=False)
+                    except TypeError:
+                        omni = torch.load(omni_ckpt_path, map_location="cpu")
+                    if isinstance(omni, dict):
+                        for key in [
+                            "state_dict", "model", "generator", "net", "student", "module", "ema", "generator_ema"
+                        ]:
+                            if key in omni and isinstance(omni[key], dict):
+                                omni = omni[key]
+                                break
+                    # Filter only audio-related keys
+                    if isinstance(omni, dict):
+                        audio_keys = [k for k in omni.keys() if k.startswith("audio_proj.") or k.startswith("audio_cond_projs.")]
+                    else:
+                        audio_keys = []
+                    assign = {}
+                    msd = dit.state_dict()
+                    # Attempt several common prefixes depending on PEFT wrapping
+                    prefixes = ("base_model.model.", "base_model.", "")
+                    for k in audio_keys:
+                        src = omni[k]
+                        for pref in prefixes:
+                            tk = f"{pref}{k}"
+                            if tk in msd and msd[tk].shape == src.shape:
+                                assign[tk] = src
+                                break
+                    if len(assign) > 0:
+                        missing, unexpected = dit.load_state_dict(assign, strict=False)
+                        audio_loaded_from_omni = True
+                        print(f"[OmniAudio] Loaded {len(assign)} audio tensors from {omni_ckpt_path}")
+                        if len(missing) > 0:
+                            print(f"[OmniAudio] Missing keys after load: {len(missing)}")
+                        if len(unexpected) > 0:
+                            print(f"[OmniAudio] Unexpected keys after load: {len(unexpected)}")
+                except Exception as e:
+                    print(f"[OmniAudio] Failed to load from {omni_ckpt_path}: {e}")
+
+            # 3) Set trainable and initialize only if not loaded from Omni
             for p in dit.audio_proj.parameters():
                 p.requires_grad = True
-            # Warm AudioPack projection with small normal noise; keep bias zero
-            if hasattr(dit.audio_proj, "proj"):
+            if hasattr(dit.audio_proj, "proj") and not audio_loaded_from_omni:
                 if hasattr(dit.audio_proj.proj, "weight"):
                     torch.nn.init.normal_(dit.audio_proj.proj.weight, mean=0.0, std=1e-3)
                 if hasattr(dit.audio_proj.proj, "bias") and dit.audio_proj.proj.bias is not None:
                     torch.nn.init.zeros_(dit.audio_proj.proj.bias)
-            # Keep per-layer projections zero so forward starts as no-op but grads flow into them
+
             for lin in dit.audio_cond_projs:
-                lin.weight.data.zero_()
-                if lin.bias is not None:
-                    lin.bias.data.zero_()
+                if not audio_loaded_from_omni:
+                    lin.weight.data.zero_()
+                    if lin.bias is not None:
+                        lin.bias.data.zero_()
                 for p in lin.parameters():
                     p.requires_grad = True
         
@@ -321,6 +390,12 @@ class WanTrainingModule(DiffusionTrainingModule):
             "min_timestep_boundary": self.min_timestep_boundary,
         }
         
+        # Classifier-free text dropout
+        self._last_text_drop = False
+        if self.enable_text_dropout and (random.random() < self.text_dropout_prob):
+            inputs_posi["prompt"] = ""
+            self._last_text_drop = True
+
         # Optionally load precomputed text embeddings and/or VAE latents
         # Text embeddings: expects a .pt with either the tensor directly or a dict containing 'prompt_embeds'
         if self.use_precomputed_context and self.precomputed_context_key in data and data[self.precomputed_context_key] is not None:
@@ -439,7 +514,13 @@ class WanTrainingModule(DiffusionTrainingModule):
                 else:
                     pad = torch.zeros(audio_emb.shape[0], target_len - cur_len, audio_emb.shape[2], dtype=audio_emb.dtype)
                     audio_emb = torch.cat([audio_emb, pad], dim=1)
-                inputs_shared["audio_emb"] = audio_emb
+                # Classifier-free audio dropout
+                self._last_audio_drop = False
+                if self.enable_audio_dropout and (random.random() < self.audio_dropout_prob):
+                    inputs_shared["audio_emb"] = torch.zeros_like(audio_emb)
+                    self._last_audio_drop = True
+                else:
+                    inputs_shared["audio_emb"] = audio_emb
             else:
                 inputs_shared[extra_input] = data[extra_input]
         
@@ -503,6 +584,12 @@ if __name__ == "__main__":
         causal_wan_lora_targets=getattr(args, "causal_wan_lora_targets", "q,k,v,o,ffn.0,ffn.2"),
         causal_wan_lora_init=getattr(args, "causal_wan_lora_init", "kaiming"),
         audio_frames_per_block=getattr(args, "audio_frames_per_block", 3),
+        enable_text_dropout=getattr(args, "enable_text_dropout", False),
+        text_dropout_prob=getattr(args, "text_dropout_prob", 0.0),
+        enable_audio_dropout=getattr(args, "enable_audio_dropout", False),
+        audio_dropout_prob=getattr(args, "audio_dropout_prob", 0.0),
+        init_audio_from_omni=getattr(args, "init_audio_from_omni", False),
+        omni_ckpt_path=getattr(args, "omni_ckpt_path", None),
     )
     # One-time dtype/device summary
     if MEM_DEBUG:
@@ -524,6 +611,34 @@ if __name__ == "__main__":
             _attach_backward_mem_hooks_for_blocks(pipe)
         except Exception as e:
             print(f"[MemDbg] module summary failed: {e}")
+    
+    # Log trainable parameter names and key groups to verify training targets
+    try:
+        names = [n for n, p in model.named_parameters() if p.requires_grad]
+        total_tensors = len(names)
+        total_params = 0
+        for _, p in model.named_parameters():
+            if p.requires_grad:
+                total_params += p.numel()
+        print(f"[Trainable] tensors={total_tensors} params={total_params:,}")
+        # Key groups of interest
+        def group(pattern: str, limit: int = 24):
+            sel = [n for n in names if pattern in n]
+            print(f"[Trainable][match='{pattern}'] count={len(sel)}")
+            for s in sel[:limit]:
+                print(f"  - {s}")
+            if len(sel) > limit:
+                print(f"  ... (+{len(sel)-limit} more)")
+        for pat in [
+            'pipe.dit.patch_embedding',
+            'pipe.dit.audio_proj',
+            'pipe.dit.audio_cond_projs',
+            'lora_A.default',
+            'lora_B.default',
+        ]:
+            group(pat)
+    except Exception as e:
+        print(f"[Trainable] failed to list trainable params: {e}")
     # Optionally enable gradient checkpointing on the loaded DiT/CausalWan
     if getattr(args, "enable_gc", False):
         try:
@@ -610,6 +725,13 @@ if __name__ == "__main__":
         # microstep accumulation for one optimizer step
         ga_loss_sum = 0.0
         ga_loss_count = 0
+        # Dropout tracking within logging window
+        win_drop_text = 0
+        win_drop_audio = 0
+        win_total = 0
+        # Grad norm snapshot at step boundary
+        last_grad_global = None
+        last_grad_maxabs = None
 
         for epoch_id in range(num_epochs):
             for data in tqdm(dataloader):
@@ -634,6 +756,41 @@ if __name__ == "__main__":
                         print(f"[MemDbg][OOM] during backward: {e}")
                         _gpu_mem_report("oom_backward", device=accelerator.device)
                         raise
+                    # Record dropout decisions for this microstep
+                    try:
+                        umodel = accelerator.unwrap_model(model)
+                        if hasattr(umodel, "_last_text_drop"):
+                            win_drop_text += int(bool(getattr(umodel, "_last_text_drop")))
+                        if hasattr(umodel, "_last_audio_drop"):
+                            win_drop_audio += int(bool(getattr(umodel, "_last_audio_drop")))
+                        win_total += 1
+                    except Exception:
+                        pass
+
+                    # Compute grad norms right before stepping on accumulation boundary
+                    if accelerator.sync_gradients and use_wandb and accelerator.is_main_process:
+                        will_log = ((global_step + 1) % wandb_log_every == 0)
+                        if will_log:
+                            try:
+                                with torch.no_grad():
+                                    gsum_sq = 0.0
+                                    gmax = 0.0
+                                    for p in model.parameters():
+                                        if p.grad is None:
+                                            continue
+                                        g = p.grad.detach()
+                                        g = g.to(dtype=torch.float32)
+                                        gs = g.norm(2)
+                                        gsum_sq += float(gs.item() ** 2)
+                                        gm = float(g.abs().max().item())
+                                        if gm > gmax:
+                                            gmax = gm
+                                    last_grad_global = (gsum_sq ** 0.5)
+                                    last_grad_maxabs = gmax
+                            except Exception:
+                                last_grad_global = None
+                                last_grad_maxabs = None
+
                     if MEM_DEBUG:
                         _gpu_mem_report("after_backward", device=accelerator.device)
                     optimizer.step()
@@ -673,6 +830,16 @@ if __name__ == "__main__":
                                     "train/epoch": epoch_id,
                                     "train/step": global_step,
                                 }
+                                # Dropout rates within window
+                                log.update({
+                                    "drop/window_text": win_drop_text / max(1, win_total),
+                                    "drop/window_audio": win_drop_audio / max(1, win_total),
+                                })
+                                # Gradient norms (if computed)
+                                if last_grad_global is not None:
+                                    log["grad/global_norm"] = last_grad_global
+                                if last_grad_maxabs is not None:
+                                    log["grad/max_abs"] = last_grad_maxabs
                                 wandb.log(log, step=global_step)
                             except Exception as e:
                                 # Non-fatal logging failure
@@ -680,6 +847,9 @@ if __name__ == "__main__":
                             # Reset window stats after logging
                             window_loss_sum = 0.0
                             window_loss_count = 0
+                            win_drop_text = 0
+                            win_drop_audio = 0
+                            win_total = 0
 
             if save_steps is None:
                 model_logger.on_epoch_end(accelerator, model, epoch_id)

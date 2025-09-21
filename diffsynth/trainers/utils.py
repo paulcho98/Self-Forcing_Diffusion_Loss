@@ -657,6 +657,14 @@ def wan_parser():
     parser.add_argument("--causal_wan_lora_alpha", type=float, default=64.0, help="LoRA alpha for CausalWanModel.")
     parser.add_argument("--causal_wan_lora_targets", type=str, default="q,k,v,o,ffn.0,ffn.2", help="Comma list of target module names for LoRA.")
     parser.add_argument("--causal_wan_lora_init", type=str, default="kaiming", help="LoRA weight init scheme.")
+    # New: condition dropout controls (CFG training)
+    parser.add_argument("--enable_text_dropout", default=False, action="store_true", help="Enable classifier-free text dropout during training.")
+    parser.add_argument("--text_dropout_prob", type=float, default=0.0, help="Probability to drop text (set prompt to empty string).")
+    parser.add_argument("--enable_audio_dropout", default=False, action="store_true", help="Enable classifier-free audio dropout during training.")
+    parser.add_argument("--audio_dropout_prob", type=float, default=0.0, help="Probability to drop audio (zero audio_emb).")
+    # New: warm-start audio modules from OmniAvatar ckpt
+    parser.add_argument("--init_audio_from_omni", default=False, action="store_true", help="Initialize audio modules from OmniAvatar checkpoint.")
+    parser.add_argument("--omni_ckpt_path", type=str, default="/home/work/.local/Self-Forcing-Omniavatar/OmniAvatar/pretrained_models/OmniAvatar-1.3B/pytorch_model.pt", help="Path to OmniAvatar audio checkpoint.")
     return parser
 
 
@@ -677,19 +685,7 @@ def flux_parser():
     parser.add_argument("--output_path", type=str, default="./models", help="Output save path.")
     parser.add_argument("--remove_prefix_in_ckpt", type=str, default="pipe.dit.", help="Remove prefix in ckpt.")
     parser.add_argument("--trainable_models", type=str, default=None, help="Models to train, e.g., dit, vae, text_encoder.")
-    parser.add_argument("--lora_base_model", type=str, default=None, help="Which model LoRA is added to.")
-    parser.add_argument("--lora_target_modules", type=str, default="q,k,v,o,ffn.0,ffn.2", help="Which layers LoRA is added to.")
-    parser.add_argument("--lora_rank", type=int, default=32, help="Rank of LoRA.")
-    parser.add_argument("--lora_checkpoint", type=str, default=None, help="Path to the LoRA checkpoint. If provided, LoRA will be loaded from this checkpoint.")
-    parser.add_argument("--extra_inputs", default=None, help="Additional model inputs, comma-separated.")
-    parser.add_argument("--align_to_opensource_format", default=False, action="store_true", help="Whether to align the lora format to opensource format. Only for DiT's LoRA.")
-    parser.add_argument("--use_gradient_checkpointing", default=False, action="store_true", help="Whether to use gradient checkpointing.")
-    parser.add_argument("--use_gradient_checkpointing_offload", default=False, action="store_true", help="Whether to offload gradient checkpointing to CPU memory.")
-    parser.add_argument("--gradient_accumulation_steps", type=int, default=1, help="Gradient accumulation steps.")
-    parser.add_argument("--find_unused_parameters", default=False, action="store_true", help="Whether to find unused parameters in DDP.")
-    parser.add_argument("--save_steps", type=int, default=None, help="Number of checkpoint saving invervals. If None, checkpoints will be saved every epoch.")
-    parser.add_argument("--dataset_num_workers", type=int, default=0, help="Number of workers for data loading.")
-    parser.add_argument("--weight_decay", type=float, default=0.01, help="Weight decay.")
+    # (Flux parser intentionally does not include CFG/OmniAudio flags.)
     return parser
 
 
