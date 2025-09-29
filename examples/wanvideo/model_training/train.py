@@ -132,6 +132,8 @@ class WanTrainingModule(DiffusionTrainingModule):
         # Warm-start audio from OmniAvatar ckpt
         init_audio_from_omni: bool = False,
         omni_ckpt_path: Optional[str] = None,
+        # set trainables
+        patch_embedding_trainable: bool = False,
     ):
         super().__init__()
         # Load models
@@ -182,13 +184,21 @@ class WanTrainingModule(DiffusionTrainingModule):
             try:
                 dit = self.pipe.dit
                 # Turn on grads for LoRA and audio modules only
-                for name, p in dit.named_parameters():
-                    if (
-                        ('lora_A.default' in name) or ('lora_B.default' in name) or
-                        ('audio_proj' in name) or ('audio_cond_projs' in name) or
-                        ('patch_embedding' in name)
-                    ):
-                        p.requires_grad = True
+                if patch_embedding_trainable:
+                    for name, p in dit.named_parameters():
+                        if (
+                            ('lora_A.default' in name) or ('lora_B.default' in name) or
+                            ('audio_proj' in name) or ('audio_cond_projs' in name) or
+                            ('patch_embedding' in name)
+                        ):
+                            p.requires_grad = True
+                else:
+                    for name, p in dit.named_parameters():
+                        if (
+                            ('lora_A.default' in name) or ('lora_B.default' in name) or
+                            ('audio_proj' in name) or ('audio_cond_projs' in name)
+                        ):
+                            p.requires_grad = True
                 if MEM_DEBUG:
                     # Print a quick count of trainable params
                     tp = sum(int(p.requires_grad) for _, p in dit.named_parameters())
@@ -204,6 +214,7 @@ class WanTrainingModule(DiffusionTrainingModule):
         self.use_precomputed_latents = getattr(args, "use_precomputed_latents", False)
         self.precomputed_context_key = getattr(args, "precomputed_context_key", "context_path")
         self.precomputed_latents_key = getattr(args, "precomputed_latents_key", "vae_latents_path")
+        self.precomputed_negative_context_path = getattr(args, "precomputed_negative_context_path", None)
         # Memory knob for audio path block size
         setattr(self.pipe, 'audio_frames_per_block', int(audio_frames_per_block))
         self.extra_inputs = extra_inputs.split(",") if extra_inputs is not None else []
@@ -217,6 +228,12 @@ class WanTrainingModule(DiffusionTrainingModule):
         self.audio_dropout_prob = float(audio_dropout_prob)
         self._last_text_drop = False
         self._last_audio_drop = False
+        # Strict validation: require negative context when using precomputed context with text dropout
+        if self.use_precomputed_context and self.enable_text_dropout and not self.precomputed_negative_context_path:
+            raise ValueError(
+                "precomputed_negative_context_path is required when using precomputed context with text dropout. "
+                "Pass --precomputed_negative_context_path to provide an unconditional embedding."
+            )
         # Configure optional Self-Forcing-style discrete timesteps
         self.pipe.sf_allowed_timestep_indices = None
         if sf_restrict_timesteps:
@@ -265,8 +282,9 @@ class WanTrainingModule(DiffusionTrainingModule):
                 dit.require_vae_embedding = True
                 # Train the new input conv so it can learn to fuse y
                 try:
-                    for p in dit.patch_embedding.parameters():
-                        p.requires_grad = True
+                    if patch_embedding_trainable:
+                        for p in dit.patch_embedding.parameters():
+                            p.requires_grad = True
                 except Exception:
                     pass
 
@@ -397,27 +415,49 @@ class WanTrainingModule(DiffusionTrainingModule):
             self._last_text_drop = True
 
         # Optionally load precomputed text embeddings and/or VAE latents
-        # Text embeddings: expects a .pt with either the tensor directly or a dict containing 'prompt_embeds'
-        if self.use_precomputed_context and self.precomputed_context_key in data and data[self.precomputed_context_key] is not None:
-            path = data[self.precomputed_context_key]
-            if isinstance(path, str):
-                if not os.path.isabs(path) and self.dataset_base_path is not None:
-                    path = os.path.join(self.dataset_base_path, path)
+        # Text embeddings: expects a .pt with either the tensor directly or a dict containing 'prompt_embeds'.
+        # If text dropout is active and a negative context path is provided, use that instead of sample-specific context.
+        if self.use_precomputed_context:
+            # If dropout triggers, require a valid negative/unconditional embedding
+            if self._last_text_drop:
+                neg_path = self.precomputed_negative_context_path
+                # Early init check above should ensure this is set, but guard anyway
+                if not neg_path:
+                    raise RuntimeError("Text dropout triggered but no precomputed_negative_context_path was provided.")
+                if not os.path.isabs(neg_path) and self.dataset_base_path is not None:
+                    neg_path = os.path.join(self.dataset_base_path, neg_path)
                 try:
-                    ctx = torch.load(path, map_location="cpu", weights_only=False)
+                    ctx = torch.load(neg_path, map_location="cpu", weights_only=False)
                 except TypeError:
-                    ctx = torch.load(path, map_location="cpu")
+                    ctx = torch.load(neg_path, map_location="cpu")
                 if isinstance(ctx, dict):
                     ctx = ctx.get("prompt_embeds", ctx.get("context", ctx))
-                if torch.is_tensor(ctx):
-                    # Ensure shape [B, L, D]
-                    if ctx.dim() == 2:
-                        ctx = ctx.unsqueeze(0)
-                    inputs_shared["context"] = ctx.to(device=self.pipe.device, dtype=self.pipe.torch_dtype)
-                    # Disable prompt to avoid unit recompute
-                    inputs_posi.pop("prompt", None)
-                else:
-                    print(f"[Precomputed] Unexpected context payload at {path}; skipping")
+                if not torch.is_tensor(ctx):
+                    raise RuntimeError(f"Negative/unconditional context payload at {neg_path} is invalid. Expect tensor or dict with 'prompt_embeds'/'context'.")
+                if ctx.dim() == 2:
+                    ctx = ctx.unsqueeze(0)
+                inputs_shared["context"] = ctx.to(device=self.pipe.device, dtype=self.pipe.torch_dtype)
+                inputs_posi.pop("prompt", None)
+            else:
+                # Use per-sample precomputed context when available
+                if self.precomputed_context_key in data and data[self.precomputed_context_key] is not None:
+                    path = data[self.precomputed_context_key]
+                    if isinstance(path, str):
+                        if not os.path.isabs(path) and self.dataset_base_path is not None:
+                            path = os.path.join(self.dataset_base_path, path)
+                        try:
+                            ctx = torch.load(path, map_location="cpu", weights_only=False)
+                        except TypeError:
+                            ctx = torch.load(path, map_location="cpu")
+                        if isinstance(ctx, dict):
+                            ctx = ctx.get("prompt_embeds", ctx.get("context", ctx))
+                        if torch.is_tensor(ctx):
+                            if ctx.dim() == 2:
+                                ctx = ctx.unsqueeze(0)
+                            inputs_shared["context"] = ctx.to(device=self.pipe.device, dtype=self.pipe.torch_dtype)
+                            inputs_posi.pop("prompt", None)
+                        else:
+                            raise RuntimeError(f"Precomputed context payload at {path} is invalid. Expect tensor or dict with 'prompt_embeds'/'context'.")
         
         # VAE latents: expects .pt tensor shaped like [1, 16, T, H/8, W/8] or [T, 16, H/8, W/8] or [1, T, 16, H/8, W/8]
         if self.use_precomputed_latents and self.precomputed_latents_key in data and data[self.precomputed_latents_key] is not None:
@@ -447,23 +487,24 @@ class WanTrainingModule(DiffusionTrainingModule):
                     inputs_shared["input_latents"] = z.to(device=self.pipe.device, dtype=self.pipe.torch_dtype)
                     # Also remove raw input video to avoid VAE encoding
                     inputs_shared["input_video"] = None
-                    # Construct y (mask + reference) from first latent frame of precomputed latents (channels-first)
+                    # Construct y (mask + reference) with reference latents replicated across time:
+                    # - mask is 0 at the first zipped step, 1 afterwards
+                    # - 16-ch reference latents copied across all T (matches original precomputed style)
                     try:
                         z_btchw = inputs_shared["input_latents"]  # [1, 16, T, H, W]
                         if z_btchw.dim() != 5 or z_btchw.shape[1] != 16:
                             raise ValueError("input_latents shape must be [1, 16, T, H, W]")
                         b, c, t, h, w = z_btchw.shape
-                        # Reference latent is first frame: [1, 16, 1, H, W] -> expand along T
-                        ref_first = z_btchw[:, :, 0:1]                    # [1, 16, 1, H, W]
-                        ref_expand = ref_first.repeat(1, 1, t, 1, 1)      # [1, 16, T, H, W]
-                        # Mask channels-first: [1, 1, T, H, W] with first frame 1, others 0
-                        mask_cf = torch.zeros((b, 1, t, h, w), dtype=self.pipe.torch_dtype, device=self.pipe.device)
-                        mask_cf[:, :, 0] = 1
+                        # Replicate the first latent across the entire zipped time dimension
+                        ref_series = z_btchw[:, :, 0:1].to(dtype=self.pipe.torch_dtype, device=self.pipe.device).repeat(1, 1, t, 1, 1)
+                        # Mask: 0 at t=0, 1 afterwards (channels-first)
+                        mask_cf = torch.ones((b, 1, t, h, w), dtype=self.pipe.torch_dtype, device=self.pipe.device)
+                        mask_cf[:, :, 0:1] = 0
                         # Concatenate mask + reference along channel dim -> [1, 17, T, H, W]
-                        y = torch.cat([mask_cf, ref_expand.to(dtype=self.pipe.torch_dtype)], dim=1)
+                        y = torch.cat([mask_cf, ref_series], dim=1)
                         inputs_shared["y"] = y
                         if MEM_DEBUG:
-                            print(f"[MemDbg][Precomputed] Built y from precomputed latents: y={tuple(y.shape)}")
+                            print(f"[MemDbg][Precomputed] Built y from precomputed latents: y={tuple(y.shape)} (mask 0@t0, ref repeated across T)")
                     except Exception as e:
                         print(f"[Precomputed] Failed to build y from input_latents: {e}")
                 else:
@@ -590,6 +631,7 @@ if __name__ == "__main__":
         audio_dropout_prob=getattr(args, "audio_dropout_prob", 0.0),
         init_audio_from_omni=getattr(args, "init_audio_from_omni", False),
         omni_ckpt_path=getattr(args, "omni_ckpt_path", None),
+        patch_embedding_trainable=getattr(args, "patch_embedding_trainable", False),
     )
     # One-time dtype/device summary
     if MEM_DEBUG:
@@ -686,6 +728,30 @@ if __name__ == "__main__":
         )
         model, optimizer, dataloader, scheduler = accelerator.prepare(model, optimizer, dataloader, scheduler)
 
+        # Option A (VRAM minimization): move unused heavy modules to CPU after prepare()
+        try:
+            pipe = accelerator.unwrap_model(model).pipe
+            # Move only modules that we know are not used based on flags
+            for name in [
+                "text_encoder",
+                "vae",
+                "image_encoder",
+                "audio_encoder",
+                "motion_controller",
+                "vace",
+            ]:
+                m = getattr(pipe, name, None)
+                if m is not None:
+                    try:
+                        m.to("cpu")
+                    except Exception:
+                        pass
+            torch.cuda.empty_cache()
+            if MEM_DEBUG:
+                print(f"[VRAM] Offloaded modules to CPU: {safe_to_cpu}")
+        except Exception as e:
+            print(f"[VRAM] Failed to move modules to CPU: {e}")
+
         # Quick precision/dtype sanity print (once)
         try:
             if accelerator.is_main_process:
@@ -701,6 +767,13 @@ if __name__ == "__main__":
         if use_wandb and accelerator.is_main_process:
             try:
                 import wandb
+                # Optional forced login for this run
+                api_key = getattr(args, "wandb_api_key", None)
+                if api_key:
+                    try:
+                        wandb.login(key=api_key, relogin=True)
+                    except Exception as e:
+                        print(f"[W&B] login failed: {e}")
                 wandb.init(
                     project=getattr(args, "wandb_project", "DiffSynth"),
                     entity=getattr(args, "wandb_entity", None),

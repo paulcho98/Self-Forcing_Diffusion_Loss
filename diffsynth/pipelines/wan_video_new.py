@@ -1419,8 +1419,10 @@ class WanVideoUnit_ImageEmbedderVAE(PipelineUnit):
         # Encode to 16-channel latents across zipped temporal length
         y_lat = pipe.vae.encode([vae_input.to(dtype=pipe.torch_dtype, device=pipe.device)], device=pipe.device, tiled=tiled, tile_size=tile_size, tile_stride=tile_stride)[0]
         y_lat = y_lat.to(dtype=pipe.torch_dtype, device=pipe.device)
-        # Build single-channel mask directly at post-VAE resolution: 0 at first step, 1 afterwards
+        # Replicate the first latent across the entire zipped time dimension
         _, t_zip, h_lat, w_lat = y_lat.shape
+        y_lat = y_lat[:, 0:1].repeat(1, t_zip, 1, 1)
+        # Build single-channel mask directly at post-VAE resolution: 0 at first step, 1 afterwards
         mask_zip = torch.ones(1, t_zip, h_lat, w_lat, device=pipe.device, dtype=pipe.torch_dtype)
         mask_zip[:, 0:1] = 0
 
