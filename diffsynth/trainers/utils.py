@@ -624,6 +624,12 @@ def wan_parser():
     parser.add_argument("--use_precomputed_latents", default=False, action="store_true", help="Use precomputed VAE latents and skip VAE encoding.")
     parser.add_argument("--precomputed_context_key", type=str, default="context_path", help="Metadata key containing path to precomputed text embeddings (.pt).")
     parser.add_argument("--precomputed_latents_key", type=str, default="vae_latents_path", help="Metadata key containing path to precomputed VAE latents (.pt).")
+    parser.add_argument(
+        "--precomputed_negative_context_path",
+        type=str,
+        default="/mnt/dataset1/jinhyuk/Hallo3/cropped_only_10K_preprocessed/text_emb/negative_embeddings.pt",
+        help="Absolute or dataset-relative path to a precomputed negative/unconditional text embedding (.pt). Used when text dropout triggers while using precomputed context.",
+    )
     # Self-Forcing discrete timestep support
     parser.add_argument("--sf_restrict_timesteps", default=False, action="store_true", help="Restrict training timesteps to a warped denoising_step_list like Self-Forcing.")
     parser.add_argument("--sf_denoising_step_list", type=str, default="1000,750,500,250", help="Comma-separated denoising steps (e.g., 1000,750,500,250).")
@@ -635,6 +641,7 @@ def wan_parser():
     parser.add_argument("--wandb_entity", type=str, default=None, help="W&B entity (team) name.")
     parser.add_argument("--wandb_run_name", type=str, default=None, help="W&B run name.")
     parser.add_argument("--wandb_tags", type=str, default=None, help="Comma-separated W&B tags.")
+    parser.add_argument("--wandb_api_key", type=str, default=None, help="W&B API key to force login for this run.")
     parser.add_argument("--wandb_log_every", type=int, default=10, help="Log every N steps.")
     # Memory / precision
     parser.add_argument("--enable_gc", default=False, action="store_true", help="Enable gradient checkpointing for DiT/CausalWan")
@@ -665,6 +672,7 @@ def wan_parser():
     # New: warm-start audio modules from OmniAvatar ckpt
     parser.add_argument("--init_audio_from_omni", default=False, action="store_true", help="Initialize audio modules from OmniAvatar checkpoint.")
     parser.add_argument("--omni_ckpt_path", type=str, default="/home/work/.local/Self-Forcing-Omniavatar/OmniAvatar/pretrained_models/OmniAvatar-1.3B/pytorch_model.pt", help="Path to OmniAvatar audio checkpoint.")
+    parser.add_argument("--patch_embedding_trainable", default=False, action="store_true", help="Train patch embedding.")
     return parser
 
 
