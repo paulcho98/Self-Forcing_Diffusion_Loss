@@ -729,28 +729,31 @@ if __name__ == "__main__":
         model, optimizer, dataloader, scheduler = accelerator.prepare(model, optimizer, dataloader, scheduler)
 
         # Option A (VRAM minimization): move unused heavy modules to CPU after prepare()
-        try:
-            pipe = accelerator.unwrap_model(model).pipe
-            # Move only modules that we know are not used based on flags
-            for name in [
-                "text_encoder",
-                "vae",
-                "image_encoder",
-                "audio_encoder",
-                "motion_controller",
-                "vace",
-            ]:
-                m = getattr(pipe, name, None)
+        if args.use_precomputed_context:
+            try:
+                pipe = accelerator.unwrap_model(model).pipe
+                m = getattr(pipe, "text_encoder", None)
                 if m is not None:
                     try:
                         m.to("cpu")
                     except Exception:
                         pass
-            torch.cuda.empty_cache()
-            if MEM_DEBUG:
-                print(f"[VRAM] Offloaded modules to CPU: {safe_to_cpu}")
-        except Exception as e:
-            print(f"[VRAM] Failed to move modules to CPU: {e}")
+                torch.cuda.empty_cache()
+
+            except Exception as e:
+                print(f"[VRAM] Failed to move text_encoder to CPU: {e}")
+        if args.use_precomputed_latents:
+            try:
+                pipe = accelerator.unwrap_model(model).pipe
+                m = getattr(pipe, "vae", None)
+                if m is not None:
+                    try:
+                        m.to("cpu")
+                    except Exception:
+                        pass
+                torch.cuda.empty_cache()
+            except Exception as e:
+                print(f"[VRAM] Failed to move vae to CPU: {e}")
 
         # Quick precision/dtype sanity print (once)
         try:
