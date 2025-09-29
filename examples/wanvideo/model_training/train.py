@@ -633,6 +633,9 @@ if __name__ == "__main__":
             'pipe.dit.patch_embedding',
             'pipe.dit.audio_proj',
             'pipe.dit.audio_cond_projs',
+            'patch_embedding',
+            'audio_proj',
+            'audio_cond_projs',
             'lora_A.default',
             'lora_B.default',
         ]:
