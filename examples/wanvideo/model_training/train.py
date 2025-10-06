@@ -134,6 +134,7 @@ class WanTrainingModule(DiffusionTrainingModule):
         omni_ckpt_path: Optional[str] = None,
         # set trainables
         patch_embedding_trainable: bool = False,
+        restrict_attention_window: bool = False,
     ):
         super().__init__()
         # Load models
@@ -161,6 +162,7 @@ class WanTrainingModule(DiffusionTrainingModule):
                     lora_init=causal_wan_lora_init,
                     # init_audio_from_omni=init_audio_from_omni,
                     # omni_audio_ckpt_path=omni_ckpt_path,
+                    restrict_attention_window=restrict_attention_window,
                     **extra_kw,
                 )
                 print("[CausalWan] Loaded external CausalWanModel and attached as pipe.dit")
@@ -632,6 +634,7 @@ if __name__ == "__main__":
         init_audio_from_omni=getattr(args, "init_audio_from_omni", False),
         omni_ckpt_path=getattr(args, "omni_ckpt_path", None),
         patch_embedding_trainable=getattr(args, "patch_embedding_trainable", False),
+        restrict_attention_window=getattr(args, "restrict_attention_window", False),
     )
     # One-time dtype/device summary
     if MEM_DEBUG:

@@ -4,15 +4,21 @@ import csv
 # --- Step 1: CONFIGURE YOUR PATHS HERE ---
 
 # Path to the folder containing your video files (e.g., .../videos_cfr)
-video_folder_path = "/mnt/dataset1/jinhyuk/Hallo3/cropped_only_10K_preprocessed/videos_cfr"
+video_folder_path = "/mnt/dataset1/jinhyuk/Hallo3/cropped_only_preprocessed/videos_cfr"
 
 # Path to the folder containing your caption .txt files
-captions_folder_path = "/mnt/dataset1/jinhyuk/Hallo3/cropped_only_10K_preprocessed/captions"
+captions_folder_path = "/mnt/dataset1/jinhyuk/Hallo3/cropped_only_preprocessed/captions"
 
-audio_folder_path = "/mnt/dataset1/jinhyuk/Hallo3/cropped_only_10K_preprocessed/audio_emb_omniavatar_aligned"
+audio_folder_path = "/mnt/dataset1/jinhyuk/Hallo3/cropped_only_preprocessed/audio_emb"
+
+text_emb_folder_path = "/mnt/dataset1/jinhyuk/Hallo3/cropped_only_preprocessed/text_emb"
+
+vae_latents_folder_path = "/mnt/dataset1/jinhyuk/Hallo3/cropped_only_preprocessed/vae_latents"
+
+masks_folder_path = "/mnt/dataset1/jinhyuk/Hallo3/cropped_only_preprocessed/masks"
 
 # Where to save the final metadata.csv file
-output_csv_path = "./metadata_audio.csv"
+output_csv_path = "./metadata_cropped_only.csv"
 
 # --- Step 2: THE SCRIPT WILL DO THE REST ---
 
@@ -42,6 +48,15 @@ for video_filename in video_files:
 
     audio_filename = f"{caption_base_name}.pt"
     audio_filepath = os.path.join(audio_folder_path, audio_filename)
+
+    text_emb_filename = f"{caption_base_name}.pt"
+    text_emb_filepath = os.path.join(text_emb_folder_path, text_emb_filename)
+
+    vae_latents_filename = f"{caption_base_name}_clip00_latents.pt"
+    vae_latents_filepath = os.path.join(vae_latents_folder_path, vae_latents_filename)
+
+    masks_filename = f"{caption_base_name}.npz"
+    masks_filepath = os.path.join(masks_folder_path, masks_filename)
     
     # Check if the caption file actually exists
     if os.path.exists(caption_filepath):
@@ -50,7 +65,7 @@ for video_filename in video_files:
             prompt = f.read().strip()
             
             # Add the video filename and its prompt to our list
-            metadata.append([video_filename, prompt, audio_filepath])
+            metadata.append([video_filename, prompt, audio_filepath, text_emb_filepath, vae_latents_filepath, masks_filepath])
     else:
         print(f"Warning: No caption file found for video '{video_filename}'. Looked for '{caption_filename}'. Skipping.")
 
@@ -59,7 +74,7 @@ with open(output_csv_path, 'w', newline='', encoding='utf-8') as csvfile:
     csv_writer = csv.writer(csvfile)
     
     # Write the header row
-    csv_writer.writerow(['video', 'prompt', 'audio_emb'])
+    csv_writer.writerow(['video', 'prompt', 'audio_emb', 'text_emb', 'vae_latent', 'masks'])
     
     # Write all the data rows
     csv_writer.writerows(metadata)
