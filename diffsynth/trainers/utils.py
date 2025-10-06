@@ -673,6 +673,7 @@ def wan_parser():
     parser.add_argument("--init_audio_from_omni", default=False, action="store_true", help="Initialize audio modules from OmniAvatar checkpoint.")
     parser.add_argument("--omni_ckpt_path", type=str, default="/home/work/.local/Self-Forcing-Omniavatar/OmniAvatar/pretrained_models/OmniAvatar-1.3B/pytorch_model.pt", help="Path to OmniAvatar audio checkpoint.")
     parser.add_argument("--patch_embedding_trainable", default=False, action="store_true", help="Train patch embedding.")
+    parser.add_argument("--restrict_attention_window", default=False, action="store_true", help="Restrict attention window.")
     return parser
 
 

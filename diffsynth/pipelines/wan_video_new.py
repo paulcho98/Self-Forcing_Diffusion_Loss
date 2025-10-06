@@ -147,6 +147,7 @@ class WanVideoPipeline(BasePipeline):
         lora_alpha: float = 64.0,
         lora_targets: Optional[list[str]] = None,
         lora_init: str = "kaiming",
+        restrict_attention_window: bool = False,
         **kwargs,
     ):
         """Dynamically load an external CausalWanModel from a local python file.
@@ -445,6 +446,8 @@ class WanVideoPipeline(BasePipeline):
             self.frame_seq_length = 1560
             if getattr(base, 'local_attn_size', -1) != -1:
                 self.kv_cache_size = int(base.local_attn_size) * self.frame_seq_length
+                if restrict_attention_window:
+                    self.kv_cache_size += self.frame_seq_length * 3
             else:
                 self.kv_cache_size = 32760
         except Exception:
